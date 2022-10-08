@@ -1,31 +1,9 @@
 from _collections import deque
 
 
-def has_unmarked_child(adjacenct_list, vertex, marked):
-    for v in adjacenct_list[vertex]:
-        if v not in marked:
-            return True
-        for w in adjacenct_list[v]:
-            if w not in marked:
-                return True
-    return False
+def dfs(starting_vertex, adjacency_list_file):
 
-def dfs(starting_vertex):
-    adjacency_list = {
-        0 : [4, 5],
-        1 : [1, 4, 6, 7],
-        2 : [3],
-        3 : [2],
-        4 : [8, 9],
-        5 : [10,12],
-        6 : [],
-        7 : [3],
-        8 : [9],
-        9 : [10],
-        10 : [6 ,8],
-        11 : [6, 7, 10],
-        12 : []
-    }
+    adjacency_list = file_to_adjacency_list(adjacency_list_file)
     pre = {}
     post = {}
 
@@ -50,6 +28,29 @@ def dfs(starting_vertex):
     return pre, post
 
 
+def file_to_adjacency_list(file):
+    list = {}
+    with open(file) as f:
+        lines = f.readlines()
+        for line in lines:
+            split = line.split(" ")
+            adjacency_list = []
+            for i in range(1, len(split)):
+                adjacency_list.append(int(split[i]))
+            list[int(split[0])] = adjacency_list
+    return list
+
+
+def has_unmarked_child(adjacenct_list, vertex, marked):
+    for v in adjacenct_list[vertex]:
+        if v not in marked:
+            return True
+        for w in adjacenct_list[v]:
+            if w not in marked:
+                return True
+    return False
+
+
 def stack_unmarked_children(adjacency_list, marked, stack, v):
     for s in reversed(adjacency_list[v]):
         if s not in marked:
@@ -62,7 +63,6 @@ def has_unexplored_child(adjacents , pre):
         if v not in pre.keys():
             return True
     return False
-
 
 
 def backtrack(count, adjacent_list, post, pre, stack2, stack):
@@ -85,6 +85,7 @@ def stack_unexplored_components(adjacency_list, marked, stack, stack2):
                 marked.append(v)
                 break
 
-list1, list2 = dfs(0)
-print(list1)
-print(list2)
+
+#pre, post = dfs(0, "file path")
+#print(pre)
+#print(post)
