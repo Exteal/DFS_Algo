@@ -1,4 +1,4 @@
-from _collections import deque
+from collections import deque
 
 
 def dfs(starting_vertex, adjacency_list_file):
