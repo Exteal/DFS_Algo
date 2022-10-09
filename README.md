@@ -13,3 +13,5 @@ Exemple :
 1 2 3</br>
 2 1</br>
 3 1</br>
+
+La fonction dfs renvoie les tableaux pre et post correspondant à l'execution de l'algorithme sur le graphe ainsi fourni.
