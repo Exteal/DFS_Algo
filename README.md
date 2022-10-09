@@ -4,7 +4,7 @@ Implémentation du Deep First Search itérative en python.
 
 _________________________________________________________________________________
 
-Dans la version actuelle, en plus du sommet de départ, un fichier contenant la liste d'adjacence doit être passée en argument la fonction dfs au format suivant 
+Dans la version actuelle, en plus du sommet de départ, un fichier contenant la liste d'adjacence au format suivant doit être passée en argument à la fonction dfs :
 
 vertex adjacent1 adjacent2 ...
 
